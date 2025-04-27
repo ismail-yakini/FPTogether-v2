@@ -20,19 +20,21 @@ const upload = multer({ storage });
 exports.createUser = async (req, res) => {
 
 	const { firstname, lastname, email, password } = req.body;
-
+	// console.log(req.body);
 	if(!firstname || !lastname || !email || !password){
+		// console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
 		return res.status(400).json({error : "All fields are required"});
 	}
 	try{
 		
-		const imageName = req.file ? req.file.filename : null;
+		// const imageName = req.file ? req.file.filename : null;
 		const newUser = new User(
 			firstname,
 			lastname,
 			email,
 			password,
-			imageName
+			// imageName
+			null
 		);
 		
 		
@@ -92,21 +94,21 @@ exports.loginUser = async (req, res) => {
 
 
 
-// Get all users
-exports.getAllUsers = (req, res) => {
-  db.query('SELECT * FROM users', (err, results) => {
-    if (err) return res.status(500).json({ error: err.message });
-    res.json(results);
-  });
-};
+// // Get all users
+// exports.getAllUsers = (req, res) => {
+//   db.query('SELECT * FROM users', (err, results) => {
+//     if (err) return res.status(500).json({ error: err.message });
+//     res.json(results);
+//   });
+// };
 
-// Get user by ID
-exports.getUserById = (req, res) => {
-  const { id } = req.params;
+// // Get user by ID
+// exports.getUserById = (req, res) => {
+//   const { id } = req.params;
 
-  db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
-    if (err) return res.status(500).json({ error: err.message });
-    if (results.length === 0) return res.status(404).json({ error: 'User not found' });
-    res.json(results[0]);
-  });
-};
+//   db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
+//     if (err) return res.status(500).json({ error: err.message });
+//     if (results.length === 0) return res.status(404).json({ error: 'User not found' });
+//     res.json(results[0]);
+//   });
+// };
