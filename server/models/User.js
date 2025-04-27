@@ -15,37 +15,54 @@ class User{
 
 
 
-    async isEmailExist() {
-        return new Promise((resolve, reject) => {
-        db.query('SELECT * FROM users WHERE email = ?', [this.email], (err, result) => {
-            if (err) return reject(err);
-            resolve(result.length > 0); 
-            });
-        });
-    }
+    // async isEmailExist() {
+    //     return new Promise((resolve, reject) => {
+		
+    //     db.query('SELECT * FROM users WHERE email = ?', [this.email], (err, results) => {
+            
+	// 		if (err) return reject(err);
+    //         resolve(results.length > 0); 
+    //         });
+    //     });
+		
+    // }
+
+	async isEmailExist() {
+		const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [this.email]);
+		return rows.length > 0;
+	  }
 
     
 
     async save() {
+		
         try {
             const exists = await this.isEmailExist();
             if (exists) {
               throw new Error('Email already in use');
             }
-
+			
             const hashedPassword = await bcrypt.hash(this.password, 10);
+			// console.log(hashedPassword);
             const sql = `
               INSERT INTO users (firstName, lastName, email, password, image)
               VALUES (?, ?, ?, ?, ?)
             `;
             const values = [this.firstname, this.lastname, this.email, hashedPassword, this.image];
+			// console.log(values);
+            // const result = await new Promise((resolve, reject) => {
+            //   db.query(sql, values, (err, result) => {
+            //     if (err) return reject(err);
+            //     resolve(result);
+            //   });
+            // });
 
-            return new Promise((resolve, reject) => {
-              db.query(sql, values, (err, result) => {
-                if (err) return reject(err);
-                resolve(result);
-              });
-            });
+			const [result] = await db.execute(sql, values);
+
+
+			this.id = result.insertId;
+
+			// return result;
 
         } catch (err) {
             throw err;
