@@ -1,4 +1,4 @@
-    const images =["group1.jpg","group2.jpg","group3.jpg","group4.jpg","group5.jpg"]
+    const images =["../src/group1.jpg","../src/group2.jpg","../src/group3.jpg","../src/group4.jpg","../src/group5.jpg"]
 
     document.getElementById('switch-to-login').addEventListener('click', function () {
     event.preventDefault();
@@ -32,7 +32,7 @@
   <p>FPTogether gives you the opportunity to create or join groups with your interests</p>
   
             <div>
-                <img id="change-image" src="group1.jpg"  />
+                <img id="change-image" src="../src/group1.jpg"  />
               </div>
 </div>
 </div>
