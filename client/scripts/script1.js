@@ -24,7 +24,7 @@
                 
                 <p class="">i don't have an account? <a href="#" id="switch-to-create">sign in</a></p>
                  
-                <button type="submit" class="create-account-btn">log in</button>
+                <button type="submit" href="HomePage.html" class="create-account-btn">log in</button>
             </form>
         </div>
         <div class="right-flex"><div style="color: white; text-align: center;">
