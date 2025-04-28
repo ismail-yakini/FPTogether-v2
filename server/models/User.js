@@ -56,11 +56,6 @@ class User{
 
 	static async findByEmail(email) {
 		const [rows] = await db.query('SELECT id, firstname, lastname, email, password, image FROM Users WHERE email = ?', [email]);
-		
-		// const result = await db.execute('SELECT * FROM Users WHERE email = ?', [email]);
-		// console.log("*************************************");
-		// console.log(result);
-		// console.log("*************************************");
 		if (rows.length > 0) {
 		  const userData = rows[0];
 		  return new User(
@@ -77,8 +72,6 @@ class User{
 		return null; // User not found
 	  }
 
-
 }
-
 
 module.exports = User;

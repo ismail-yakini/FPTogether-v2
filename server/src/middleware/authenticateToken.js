@@ -1,20 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// const authenticateToken = (req, res, next) => {
-//   const token = req.header('Authorization')?.split(' ')[1]; // Get token from Authorization header
-
-//   if (!token) {
-//     return res.status(403).json({ error: 'No token provided' });
-//   }
-
-//   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-//     if (err) return res.sendStatus(403); // Token is not valid
-
-//     req.user = user; // Attach the user info (user.id, user.email) to the request
-//     next(); // Proceed to the next middleware (i.e. your controller)
-//   });
-// };
-
 
 const authenticateToken = (req, res, next) => {
     // Check if the Authorization header contains a Bearer token

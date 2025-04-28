@@ -17,6 +17,6 @@ app.use('/api', postRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  // window.location.href('HomPage.html');
+  
 
 });

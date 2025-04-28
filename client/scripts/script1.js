@@ -45,7 +45,7 @@
     setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
         imgElement.src = images[currentIndex];
-    }, 2000);
+    }, 5000);
     const switchToCreate = document.getElementById('switch-to-create');
     if (switchToCreate) {
         switchToCreate.addEventListener('click', function (event) {
@@ -54,14 +54,7 @@
         });
     }
 
-
-
-
-
-
-
-
-    // Now, add the event listener for the login form
+    
     const loginForm = document.getElementById('loginform');
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault(); // Prevent page refresh
@@ -83,9 +76,7 @@
                 // alert('Login successful!');
                 console.log('JWT Token:', data.token);
                 // Store the token
-                localStorage.setItem('token', data.token); // Store the token
-                // Redirect or perform actions after successful login
-                // window.location.href = '/dashboard'; // Example redirect after login
+                localStorage.setItem('token', data.token);
                 window.location.href = 'HomePage.html';
             } else {
                 alert(data.message);
@@ -105,52 +96,47 @@
     setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
         imgElement.src = images[currentIndex];
-    }, 10000);
+    }, 5000);
 
 
 
-
-
-
-// Handle sign up
 const signupForm = document.getElementById('account-form');
-signupForm.addEventListener('submit', async (e) => {
-  e.preventDefault(); // Prevent page refresh
+    signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent page refresh
 
-  const firstname = document.getElementById('firstname').value;
-  const lastname = document.getElementById('lastname').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-
-  try {
-    const response = await fetch('http://localhost:3000/api/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ firstname, lastname, email, password }),
-    });
+    const firstname = document.getElementById('firstname').value;
+    const lastname = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
 
-    const data = await response.json();
-    // console.log(response);
-    console.log(data);
-    if (response.ok) {
-        
-      console.log('JWT Token:', data.token);
-      // Optionally, store the token for future use
-      localStorage.setItem('token', data.token); // Store the token in localStorage
+    try {
+        const response = await fetch('http://localhost:3000/api/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ firstname, lastname, email, password }),
+        });
 
 
-      window.location.href = 'HomePage.html';
-    } else {
-        // console.log(data.message);
-      alert(data.error);
+        const data = await response.json();
+        // console.log(response);
+        console.log(data);
+        if (response.ok) {
+            
+        // console.log('JWT Token:', data.token);
+        localStorage.setItem('token', data.token); // Store the token in localStorage
 
+
+        window.location.href = 'HomePage.html';
+        } else {
+            // console.log(data.message);
+        alert(data.error);
+
+        }
+    } catch (error) {
+        console.error('Sign Up Error:', error);
+        alert('An error occurred. Please try again later.');
     }
-  } catch (error) {
-    console.error('Sign Up Error:', error);
-    alert('An error occurred. Please try again later.');
-  }
 });
