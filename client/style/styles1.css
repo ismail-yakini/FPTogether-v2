@@ -5,6 +5,11 @@ body {
     display: flex;
     color: white;
 }
+input:-webkit-autofill {
+    background-color:#3d374c ;
+    -webkit-box-shadow: 0 0 0px 1000px #3d374c inset;
+    -webkit-text-fill-color: white;
+}
 .banner {
     animation: slide-in 1s ease-out;
   }
@@ -58,10 +63,10 @@ h2 ,h1{
     border-radius: 6px; 
 }    
 .left-flex{
-    background-color: blueviolet;
+    background-color: #43316aec;
     border-radius: 6px;
     outline: 1rem solid #2c2638;
-    border: 5px solid #FF5733;
+    border: 5px solid aqua;
     justify-content: center;
     align-items: center;
     display: block;
@@ -94,7 +99,7 @@ input{
 }
 .inline {
     display: flex;
-    gap: 3px; /* Adds space between inputs */
+    gap: 3px; 
 }
 .create-account-btn {
     width: 100%;
@@ -115,6 +120,6 @@ input{
     }
 
     .left-flex, .right-flex {
-        min-height: 50vh; /* Adjust height for stacked layout */
+        min-height: 50vh; 
     }
 } 

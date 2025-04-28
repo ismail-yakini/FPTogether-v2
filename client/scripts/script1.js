@@ -6,7 +6,7 @@
     // Clear the form's inner HTML
     
     body.innerHTML = `
-        <div class="left-flex">
+        <div style="background-color:#2c2638 ;" class="left-flex">
              <div class="title-bar banner">
                 <h1>FP<span style="color: aqua;">T</span>ogether</h1>
             </div>
@@ -27,7 +27,7 @@
                 <button type="submit" href="HomePage.html" class="create-account-btn">log in</button>
             </form>
         </div>
-        <div class="right-flex"><div style="color: white; text-align: center;">
+        <div style="background-color:#43316aec ;" class="right-flex"><div style="color: white; text-align: center;">
   <h2>Find your interests and friends to work with</h2>
   <p>FPTogether gives you the opportunity to create or join groups with your interests</p>
   
@@ -61,4 +61,4 @@
     setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
         imgElement.src = images[currentIndex];
-    }, 2000);
+    }, 10000);
