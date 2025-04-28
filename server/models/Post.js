@@ -57,7 +57,7 @@ class Post{
         try {
             
             // const [rows] = await db.query('SELECT * FROM posts ORDER BY Created_at DESC');
-            const [rows] = await db.query('Select Posts.Id, Posts.Title, Posts.Description, Posts.UserId, Users.email, Posts.Created_at from Posts inner join Users on Posts.Userid = Users.id;');
+            const [rows] = await db.query(`Select Posts.Id, Users.firstname, Users.lastname, Posts.Title, Posts.Description, Posts.UserId, Users.email, DATE_FORMAT(Posts.Created_at, '%d/%m/%Y') AS Created_at from Posts inner join Users on Posts.Userid = Users.id order by Posts.Id Desc;`);
             // const [rows] = await db.query('SELECT * FROM posts');
             return rows;
         } catch (error) {

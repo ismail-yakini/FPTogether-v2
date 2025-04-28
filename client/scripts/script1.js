@@ -11,7 +11,7 @@
                 <h1>FP<span style="color: aqua;">T</span>ogether</h1>
             </div>
             <h1 class="large-title">log in</h1>
-            <form id="form">
+            <form id="loginform">
                 <div class="">
                     <label for="email"></label>
                     <input type="email" id="loginEmail" placeholder="Enter your email" required>
@@ -80,12 +80,13 @@
 
             const data = await response.json();
             if (response.ok) {
-                alert('Login successful!');
+                // alert('Login successful!');
                 console.log('JWT Token:', data.token);
                 // Store the token
                 localStorage.setItem('token', data.token); // Store the token
                 // Redirect or perform actions after successful login
                 // window.location.href = '/dashboard'; // Example redirect after login
+                window.location.href = 'HomePage.html';
             } else {
                 alert(data.message);
             }
@@ -136,10 +137,13 @@ signupForm.addEventListener('submit', async (e) => {
     // console.log(response);
     console.log(data);
     if (response.ok) {
-      alert('Sign up successful!');
+        
       console.log('JWT Token:', data.token);
       // Optionally, store the token for future use
       localStorage.setItem('token', data.token); // Store the token in localStorage
+
+
+      window.location.href = 'HomePage.html';
     } else {
         // console.log(data.message);
       alert(data.error);
