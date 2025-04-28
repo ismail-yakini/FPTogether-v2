@@ -104,7 +104,7 @@
     setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
         imgElement.src = images[currentIndex];
-    }, 2000);
+    }, 10000);
 
 
 
