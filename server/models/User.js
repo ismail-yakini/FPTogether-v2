@@ -15,17 +15,6 @@ class User{
 
 
 
-    // async isEmailExist() {
-    //     return new Promise((resolve, reject) => {
-		
-    //     db.query('SELECT * FROM users WHERE email = ?', [this.email], (err, results) => {
-            
-	// 		if (err) return reject(err);
-    //         resolve(results.length > 0); 
-    //         });
-    //     });
-		
-    // }
 
 	async isEmailExist() {
 		const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [this.email]);
@@ -49,13 +38,7 @@ class User{
               VALUES (?, ?, ?, ?, ?)
             `;
             const values = [this.firstname, this.lastname, this.email, hashedPassword, this.image];
-			// console.log(values);
-            // const result = await new Promise((resolve, reject) => {
-            //   db.query(sql, values, (err, result) => {
-            //     if (err) return reject(err);
-            //     resolve(result);
-            //   });
-            // });
+
 
 			const [result] = await db.execute(sql, values);
 
@@ -69,14 +52,6 @@ class User{
         }
   	}
 
-
-	// static async findByEmail(email) {
-	// 	const [rows] = await db.execute(
-	// 		'SELECT * FROM Users WHERE email = ?',
-	// 	  	[email]
-	// 	);
-	// 	return rows[0]; // if user found, return the first one
-	// }
 
 
 	static async findByEmail(email) {
